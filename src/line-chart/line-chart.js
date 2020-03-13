@@ -183,13 +183,9 @@ class LineChart extends AbstractChart {
     }
 
     const datas = this.getDatas(data);
-    const x = i => {
-      const valll = Math.floor(
-        paddingRight + ((i) * (width - paddingRight)) / (dataset.data.length - 1)
+    const x = i => Math.floor(
+        paddingRight + (i * (width - paddingRight)) / (dataset.data.length - 1)
       );
-      console.log(i, valll, dataset.data.length, width)
-      return valll
-    }
     const baseHeight = this.calcBaseHeight(datas, height);
     const y = i => {
       const yHeight = this.calcHeight(dataset.data[i], datas, height);
