@@ -183,10 +183,13 @@ class LineChart extends AbstractChart {
     }
 
     const datas = this.getDatas(data);
-    const x = i =>
-      Math.floor(
-        paddingRight + (i * (width - paddingRight)) / dataset.data.length
+    const x = i => {
+      const valll = Math.floor(
+        paddingRight + ((i) * (width - paddingRight)) / (dataset.data.length - 1)
       );
+      console.log(i, valll, dataset.data.length, width)
+      return valll
+    }
     const baseHeight = this.calcBaseHeight(datas, height);
     const y = i => {
       const yHeight = this.calcHeight(dataset.data[i], datas, height);
@@ -230,7 +233,7 @@ class LineChart extends AbstractChart {
       const d =
         this.getBezierLinePoints(dataset, config) +
         ` L${paddingRight +
-          ((width - paddingRight) / dataset.data.length) *
+          ((width - paddingRight) / (dataset.data.length-1)) *
             (dataset.data.length - 1)},${(height / 4) * 3 +
           paddingTop} L${paddingRight},${(height / 4) * 3 + paddingTop} Z`;
       return (
